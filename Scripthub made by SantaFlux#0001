@@ -1,0 +1,441 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib(" Scripthub made by SantaFlux#0001", "Ocean")
+    -- MAIN
+    local Main = Window:NewTab("Da hood")
+    local MainSection = Main:NewSection("Main")
+
+MainSection:NewButton("Ray x ", "Loads ray x ", function()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/SpaceYes/Lua/Main/DaHood.Lua'))()
+end)
+
+MainSection:NewButton("Destiny x ", "Loads destiny ", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/compwnter/destiny/main/loader"))()
+end)
+
+MainSection:NewButton("Autofarm", "Loads autofarm ", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/NighterEpic/Faded-Grid/main/YesEpic", true))()
+end)
+
+MainSection:NewButton("Faded  ", "Loads Faded x ", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/NighterEpic/Faded/main/YesEpic", true))()
+end)
+
+
+MainSection:NewButton("Fly x to toggle", "Pres x to toggle", function()
+    local plr = game.Players.LocalPlayer
+    local mouse = plr:GetMouse()
+    
+    localplayer = plr
+    
+    if workspace:FindFirstChild("Core") then
+    workspace.Core:Destroy()
+    end
+    
+    local Core = Instance.new("Part")
+    Core.Name = "Core"
+    Core.Size = Vector3.new(0.05, 0.05, 0.05)
+    
+    spawn(function()
+    Core.Parent = workspace
+    local Weld = Instance.new("Weld", Core)
+    Weld.Part0 = Core
+    Weld.Part1 = localplayer.Character.LowerTorso
+    Weld.C0 = CFrame.new(0, 0, 0)
+    end)
+    
+    workspace:WaitForChild("Core")
+    
+    local torso = workspace.Core
+    flying = true
+    local speed=10
+    local keys={a=false,d=false,w=false,s=false}
+    local e1
+    local e2
+    local function start()
+    local pos = Instance.new("BodyPosition",torso)
+    local gyro = Instance.new("BodyGyro",torso)
+    pos.Name="EPIXPOS"
+    pos.maxForce = Vector3.new(math.huge, math.huge, math.huge)
+    pos.position = torso.Position
+    gyro.maxTorque = Vector3.new(9e9, 9e9, 9e9)
+    gyro.cframe = torso.CFrame
+    repeat
+    wait()
+    localplayer.Character.Humanoid.PlatformStand=true
+    local new=gyro.cframe - gyro.cframe.p + pos.position
+    if not keys.w and not keys.s and not keys.a and not keys.d then
+    speed=5
+    end
+    if keys.w then
+    new = new + workspace.CurrentCamera.CoordinateFrame.lookVector * speed
+    speed=speed+0
+    end
+    if keys.s then
+    new = new - workspace.CurrentCamera.CoordinateFrame.lookVector * speed
+    speed=speed+0
+    end
+    if keys.d then
+    new = new * CFrame.new(speed,0,0)
+    speed=speed+0
+    end
+    if keys.a then
+    new = new * CFrame.new(-speed,0,0)
+    speed=speed+0
+    end
+    if speed>10 then
+    speed=5
+    end
+    pos.position=new.p
+    if keys.w then
+    gyro.cframe = workspace.CurrentCamera.CoordinateFrame*CFrame.Angles(-math.rad(speed*0),0,0)
+    elseif keys.s then
+    gyro.cframe = workspace.CurrentCamera.CoordinateFrame*CFrame.Angles(math.rad(speed*0),0,0)
+    else
+    gyro.cframe = workspace.CurrentCamera.CoordinateFrame
+    end
+    until flying == false
+    if gyro then gyro:Destroy() end
+    if pos then pos:Destroy() end
+    flying=false
+    localplayer.Character.Humanoid.PlatformStand=false
+    speed=10
+    end
+    e1=mouse.KeyDown:connect(function(key)
+    if not torso or not torso.Parent then flying=false e1:disconnect() e2:disconnect() return end
+    if key=="w" then
+    keys.w=true
+    elseif key=="s" then
+    keys.s=true
+    elseif key=="a" then
+    keys.a=true
+    elseif key=="d" then
+    keys.d=true
+    elseif key=="x" then
+    if flying==true then
+    flying=false
+    else
+    flying=true
+    start()
+    end
+    end
+    end)
+    e2=mouse.KeyUp:connect(function(key)
+    if key=="w" then
+    keys.w=false
+    elseif key=="s" then
+    keys.s=false
+    elseif key=="a" then
+    keys.a=false
+    elseif key=="d" then
+    keys.d=false
+    end
+    end)
+    start()
+end)
+
+MainSection:NewButton("Aimlock/silent aim", "No info", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/nyulachan/nyula/main/nyulauh"))();
+end)
+
+local ExtraSection = Main:NewSection("Extra")
+
+
+ExtraSection:NewButton("Crash script", "Loads crash script", function()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/BetterDaHood/BetterDaHoodCrasher/main/Crash'))()
+end)
+
+ExtraSection:NewButton("Da hood cash selling script", "Makes selling cash ez", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Crostide/cdhc/main/gui"))()
+end)
+
+ExtraSection:NewButton("Da hood cash counter", "Makes selling cash ez", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Crostide/Counter/main/Cash"))()
+end)
+
+local Main = Window:NewTab("Vbet")
+local MainSection = Main:NewSection("Main")
+
+MainSection:NewButton("Vbet Autoclicker", "Autoclicks for u", function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/L0tQyFxT", true))()
+end)
+
+MainSection:NewButton("Fly x to toggle", "Pres x to toggle", function()
+    local plr = game.Players.LocalPlayer
+    local mouse = plr:GetMouse()
+    
+    localplayer = plr
+    
+    if workspace:FindFirstChild("Core") then
+    workspace.Core:Destroy()
+    end
+    
+    local Core = Instance.new("Part")
+    Core.Name = "Core"
+    Core.Size = Vector3.new(0.05, 0.05, 0.05)
+    
+    spawn(function()
+    Core.Parent = workspace
+    local Weld = Instance.new("Weld", Core)
+    Weld.Part0 = Core
+    Weld.Part1 = localplayer.Character.LowerTorso
+    Weld.C0 = CFrame.new(0, 0, 0)
+    end)
+    
+    workspace:WaitForChild("Core")
+    
+    local torso = workspace.Core
+    flying = true
+    local speed=10
+    local keys={a=false,d=false,w=false,s=false}
+    local e1
+    local e2
+    local function start()
+    local pos = Instance.new("BodyPosition",torso)
+    local gyro = Instance.new("BodyGyro",torso)
+    pos.Name="EPIXPOS"
+    pos.maxForce = Vector3.new(math.huge, math.huge, math.huge)
+    pos.position = torso.Position
+    gyro.maxTorque = Vector3.new(9e9, 9e9, 9e9)
+    gyro.cframe = torso.CFrame
+    repeat
+    wait()
+    localplayer.Character.Humanoid.PlatformStand=true
+    local new=gyro.cframe - gyro.cframe.p + pos.position
+    if not keys.w and not keys.s and not keys.a and not keys.d then
+    speed=5
+    end
+    if keys.w then
+    new = new + workspace.CurrentCamera.CoordinateFrame.lookVector * speed
+    speed=speed+0
+    end
+    if keys.s then
+    new = new - workspace.CurrentCamera.CoordinateFrame.lookVector * speed
+    speed=speed+0
+    end
+    if keys.d then
+    new = new * CFrame.new(speed,0,0)
+    speed=speed+0
+    end
+    if keys.a then
+    new = new * CFrame.new(-speed,0,0)
+    speed=speed+0
+    end
+    if speed>10 then
+    speed=5
+    end
+    pos.position=new.p
+    if keys.w then
+    gyro.cframe = workspace.CurrentCamera.CoordinateFrame*CFrame.Angles(-math.rad(speed*0),0,0)
+    elseif keys.s then
+    gyro.cframe = workspace.CurrentCamera.CoordinateFrame*CFrame.Angles(math.rad(speed*0),0,0)
+    else
+    gyro.cframe = workspace.CurrentCamera.CoordinateFrame
+    end
+    until flying == false
+    if gyro then gyro:Destroy() end
+    if pos then pos:Destroy() end
+    flying=false
+    localplayer.Character.Humanoid.PlatformStand=false
+    speed=10
+    end
+    e1=mouse.KeyDown:connect(function(key)
+    if not torso or not torso.Parent then flying=false e1:disconnect() e2:disconnect() return end
+    if key=="w" then
+    keys.w=true
+    elseif key=="s" then
+    keys.s=true
+    elseif key=="a" then
+    keys.a=true
+    elseif key=="d" then
+    keys.d=true
+    elseif key=="x" then
+    if flying==true then
+    flying=false
+    else
+    flying=true
+    start()
+    end
+    end
+    end)
+    e2=mouse.KeyUp:connect(function(key)
+    if key=="w" then
+    keys.w=false
+    elseif key=="s" then
+    keys.s=false
+    elseif key=="a" then
+    keys.a=false
+    elseif key=="d" then
+    keys.d=false
+    end
+    end)
+    start()
+end)
+
+
+local Main = Window:NewTab("Adopt me")
+local MainSection = Main:NewSection("Main")
+
+MainSection:NewButton("Fly x to toggle", "Pres x to toggle", function()
+    local plr = game.Players.LocalPlayer
+    local mouse = plr:GetMouse()
+    
+    localplayer = plr
+    
+    if workspace:FindFirstChild("Core") then
+    workspace.Core:Destroy()
+    end
+    
+    local Core = Instance.new("Part")
+    Core.Name = "Core"
+    Core.Size = Vector3.new(0.05, 0.05, 0.05)
+    
+    spawn(function()
+    Core.Parent = workspace
+    local Weld = Instance.new("Weld", Core)
+    Weld.Part0 = Core
+    Weld.Part1 = localplayer.Character.LowerTorso
+    Weld.C0 = CFrame.new(0, 0, 0)
+    end)
+    
+    workspace:WaitForChild("Core")
+    
+    local torso = workspace.Core
+    flying = true
+    local speed=10
+    local keys={a=false,d=false,w=false,s=false}
+    local e1
+    local e2
+    local function start()
+    local pos = Instance.new("BodyPosition",torso)
+    local gyro = Instance.new("BodyGyro",torso)
+    pos.Name="EPIXPOS"
+    pos.maxForce = Vector3.new(math.huge, math.huge, math.huge)
+    pos.position = torso.Position
+    gyro.maxTorque = Vector3.new(9e9, 9e9, 9e9)
+    gyro.cframe = torso.CFrame
+    repeat
+    wait()
+    localplayer.Character.Humanoid.PlatformStand=true
+    local new=gyro.cframe - gyro.cframe.p + pos.position
+    if not keys.w and not keys.s and not keys.a and not keys.d then
+    speed=5
+    end
+    if keys.w then
+    new = new + workspace.CurrentCamera.CoordinateFrame.lookVector * speed
+    speed=speed+0
+    end
+    if keys.s then
+    new = new - workspace.CurrentCamera.CoordinateFrame.lookVector * speed
+    speed=speed+0
+    end
+    if keys.d then
+    new = new * CFrame.new(speed,0,0)
+    speed=speed+0
+    end
+    if keys.a then
+    new = new * CFrame.new(-speed,0,0)
+    speed=speed+0
+    end
+    if speed>10 then
+    speed=5
+    end
+    pos.position=new.p
+    if keys.w then
+    gyro.cframe = workspace.CurrentCamera.CoordinateFrame*CFrame.Angles(-math.rad(speed*0),0,0)
+    elseif keys.s then
+    gyro.cframe = workspace.CurrentCamera.CoordinateFrame*CFrame.Angles(math.rad(speed*0),0,0)
+    else
+    gyro.cframe = workspace.CurrentCamera.CoordinateFrame
+    end
+    until flying == false
+    if gyro then gyro:Destroy() end
+    if pos then pos:Destroy() end
+    flying=false
+    localplayer.Character.Humanoid.PlatformStand=false
+    speed=10
+    end
+    e1=mouse.KeyDown:connect(function(key)
+    if not torso or not torso.Parent then flying=false e1:disconnect() e2:disconnect() return end
+    if key=="w" then
+    keys.w=true
+    elseif key=="s" then
+    keys.s=true
+    elseif key=="a" then
+    keys.a=true
+    elseif key=="d" then
+    keys.d=true
+    elseif key=="x" then
+    if flying==true then
+    flying=false
+    else
+    flying=true
+    start()
+    end
+    end
+    end)
+    e2=mouse.KeyUp:connect(function(key)
+    if key=="w" then
+    keys.w=false
+    elseif key=="s" then
+    keys.s=false
+    elseif key=="a" then
+    keys.a=false
+    elseif key=="d" then
+    keys.d=false
+    end
+    end)
+    start()
+end)
+
+MainSection:NewButton("adopt me gingerbread+ more script", "idk", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/IceMael7/NewIceHub/main/Brookhaven"))()
+end)
+
+MainSection:NewButton("Fake fly ride neon and ride pets", "fake pets", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/IceMael7/NewIceHub/main/Brookhaven"))()
+end)
+
+MainSection:NewButton("Autofarm", "Autofarm", function()
+    getgenv().OptimizeScript = true
+ 
+--Script--
+getgenv().mainKey = "nil"
+ 
+local a,b,c,d,e=loadstring,request or http_request or (http and http.request) or (syn and syn.request),assert,tostring,"https://api.eclipsehub.xyz/auth"c(a and b,"Executor not Supported")a(b({Url=e.."\?\107e\121\61"..d(mainKey),Headers={["User-Agent"]="Eclipse"}}).Body)()
+end)
+
+local Main = Window:NewTab("Kat")
+local MainSection = Main:NewSection("Main")
+
+MainSection:NewButton("OP KAT Script ", "Op", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/CriShoux/OwlHub/master/OwlHub.txt"))();
+end)
+
+MainSection:NewButton("an extra cat script ", "Also op", function()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/zReal-King/Knife-Ability-Test/main/Gui'))()
+end)
+
+local Main = Window:NewTab("Mm2")
+local MainSection = Main:NewSection("Main")
+
+MainSection:NewButton("MM2 op script ", "Very op", function()
+    loadstring(game:GetObjects("rbxassetid://4001118261")[1].Source)()
+end)
+
+local Main = Window:NewTab("Bedwars")
+local MainSection = Main:NewSection("Main")
+
+MainSection:NewButton("Bedwars best script ", "Very op", function()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/7GrandDadPGN/VapeV4ForRoblox/main/loadstring'))()
+end)
+
+local Main = Window:NewTab("Pet sim x")
+local MainSection = Main:NewSection("Main")
+
+MainSection:NewButton("Pet sim x ", "Very op", function()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/destylol/catalyst/itachi/main.lua'))()
+end)
+
+MainSection:NewButton("Pet sim x 2", "Very op", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/UltraStuff/scripts2/main/petsimx"))()
+end)
